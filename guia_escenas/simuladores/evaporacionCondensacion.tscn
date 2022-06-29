@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Sprites/fondoBlanco.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/lago.webp" type="Texture" id=2]
+[ext_resource path="res://Sprites/evaporacion/evaporacion2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/evaporacion/Sin nombre.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/evaporacion/evaporacion3.png" type="Texture" id=5]
+[ext_resource path="res://guia_escenas/simuladores/evaporacionCondensacion.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/evaporacion/nubepequeña.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/evaporacion/nube mediana.png" type="Texture" id=8]
+[ext_resource path="res://fonts/JAi_____.TTF" type="DynamicFontData" id=9]
+[ext_resource path="res://button_normal_style.tres" type="StyleBox" id=10]
+[ext_resource path="res://button_hover_style.tres" type="StyleBox" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 9 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 742, 553 )
+texture = ExtResource( 1 )
+offset = Vector2( -304, -248 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 505, 305 )
+texture = ExtResource( 2 )
+
+[node name="evaporacion2" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 576.5, 243.5 )
+scale = Vector2( 0.648387, 0.587719 )
+texture = ExtResource( 3 )
+
+[node name="evaporacion3" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 559.25, 273.5 )
+scale = Vector2( 0.633787, 0.673913 )
+texture = ExtResource( 5 )
+
+[node name="evaporacion1" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 465.25, 348 )
+scale = Vector2( 0.767782, 0.722222 )
+texture = ExtResource( 4 )
+
+[node name="nubepeque" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 408, 137 )
+scale = Vector2( 0.216245, 0.203358 )
+texture = ExtResource( 7 )
+
+[node name="nubegrande" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 523, 197 )
+scale = Vector2( 0.299692, 0.195167 )
+texture = ExtResource( 8 )
+
+[node name="nubegrande2" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 539, 144 )
+scale = Vector2( 0.299692, 0.195167 )
+texture = ExtResource( 8 )
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 377.0
+margin_top = 553.0
+margin_right = 538.0
+margin_bottom = 594.0
+min_value = -10.0
+max_value = 45.0
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1008.0
+margin_bottom = 122.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = " El sol, que dirige el ciclo del agua, calienta el agua de los océanos, la cual se evapora hacia el aire 
+como vapor de agua. Corrientes ascendentes de aire llevan el vapor a las capas superiores de la atmósfera,
+ donde la menor temperatura causa que elvapor de agua se condense y forme las nubes"
+
+[node name="temperaturalabel" type="Label" parent="."]
+margin_left = 266.0
+margin_top = 564.0
+margin_right = 367.0
+margin_bottom = 580.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Temperatura"
+
+[node name="temperaturalabel2" type="Label" parent="."]
+margin_left = 188.0
+margin_top = 74.0
+margin_right = 289.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.0470588, 0.262745, 0.00392157, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Prueba como la variacion de la temperatura afecta a la formacion de nubes"
+
+[node name="menuprincipal" type="Button" parent="."]
+margin_left = 24.0
+margin_top = 541.0
+margin_right = 191.0
+margin_bottom = 580.0
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = ExtResource( 10 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+text = "Volver"
+
+[node name="siguiente" type="Button" parent="."]
+margin_left = 872.0
+margin_top = 540.0
+margin_right = 993.0
+margin_bottom = 577.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+text = "Siguiente"
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="menuprincipal" to="." method="_on_menuprincipal_pressed"]
+[connection signal="pressed" from="siguiente" to="." method="_on_siguiente_pressed"]

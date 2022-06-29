@@ -1,0 +1,4 @@
+Viento horizontal
+viento vertical
+precipitaciones --> On / Off
+temperatura 

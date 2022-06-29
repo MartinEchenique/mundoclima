@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://button_normal_style.tres" type="StyleBox" id=1]
+[ext_resource path="res://button_hover_style.tres" type="StyleBox" id=2]
+[ext_resource path="res://fonts/JAi_____.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Sprites/climasimbols.jpg" type="Texture" id=4]
+[ext_resource path="res://guia_escenas/menuGuia.gd" type="Script" id=5]
+
+[sub_resource type="Theme" id=1]
+Button/styles/hover = ExtResource( 2 )
+Button/styles/normal = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 29
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+font_data = ExtResource( 3 )
+
+[node name="menuGuia" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 8.0
+margin_bottom = 8.0
+theme = SubResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 181.0 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 2.0
+margin_top = -7.0
+margin_right = 1028.0
+margin_bottom = 619.0
+texture = ExtResource( 4 )
+
+[node name="temperaturaButton" type="Button" parent="."]
+margin_left = 449.0
+margin_top = 288.0
+margin_right = 569.0
+margin_bottom = 306.0
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "TEMPERATURA"
+
+[node name="Humedad Button" type="Button" parent="."]
+margin_left = 452.0
+margin_top = 336.0
+margin_right = 570.0
+margin_bottom = 354.0
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "HUMEDAD"
+
+[node name="volverAlMenuPrincipalButton" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 541.0
+margin_right = 153.0
+margin_bottom = 559.0
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "Volver al menú principal"
+
+[node name="precipitacionesButton" type="Button" parent="."]
+margin_left = 451.0
+margin_top = 383.0
+margin_right = 568.0
+margin_bottom = 403.0
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "PRECIPITACIONES"
+
+[node name="explicacionLabel" type="Label" parent="."]
+margin_left = 3.0
+margin_top = -1.0
+margin_right = 1026.0
+margin_bottom = 172.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Los elementos del clima son aquellos fenómenos que se producen en la atmosfera, y que combinados explican el tiempo atmosférico como el clima de un lugar. 
+Estos son: La temperatura, la humedad y las precipitaciones."
+autowrap = true
+
+[node name="conoceMasLabel" type="Label" parent="."]
+margin_left = 146.0
+margin_top = 225.0
+margin_right = 886.0
+margin_bottom = 273.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Aprendamos sobre estos elementos"
+
+[connection signal="pressed" from="volverAlMenuPrincipalButton" to="." method="_on_volverAlMenuPrincipalButton_pressed"]
+[connection signal="pressed" from="precipitacionesButton" to="." method="_on_precipitacionesButton_pressed"]
