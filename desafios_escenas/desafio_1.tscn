@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Sprites/fondoBlanco.png" type="Texture" id=1]
+[ext_resource path="res://buttonfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Sprites/fondo_cieloDespejado.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/evaporacion/nubepequeña.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/evaporacion/termometro.png" type="Texture" id=4]
@@ -15,21 +15,16 @@
 [ext_resource path="res://desafios_escenas/desafio1_incorrecto.tscn" type="PackedScene" id=13]
 [ext_resource path="res://button_normal_style.tres" type="StyleBox" id=14]
 [ext_resource path="res://button_hover_style.tres" type="StyleBox" id=15]
+[ext_resource path="res://textoexplicativo.tres" type="DynamicFont" id=16]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 412.625, 39 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 414.5, 64 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 411.75, 113.5 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 771, 591 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 75.5, 42 )
+extents = Vector2( 49.25, 25.5 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 42, 57 )
+extents = Vector2( 29.5, 37 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 19
@@ -40,73 +35,58 @@ script = ExtResource( 8 )
 Termometro = ExtResource( 11 )
 respuestaIncorrecta = ExtResource( 13 )
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -89.0
-margin_top = -56.0
-margin_right = 1311.0
-margin_bottom = 644.0
-rect_pivot_offset = Vector2( 915, 519 )
-mouse_filter = 2
-texture = ExtResource( 1 )
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 560, 304 )
+shape = SubResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1380.0
 margin_bottom = 776.0
-rect_scale = Vector2( 0.598752, 0.564729 )
+rect_scale = Vector2( 0.556206, 0.506222 )
 mouse_filter = 2
 input_pass_on_modal_close_click = false
 texture = ExtResource( 2 )
 
 [node name="nube" type="Area2D" parent="."]
 
-[node name="cielo" type="CollisionShape2D" parent="nube"]
-position = Vector2( 413.375, 39 )
-shape = SubResource( 1 )
-
-[node name="aire" type="CollisionShape2D" parent="nube"]
-position = Vector2( 411.5, 145 )
-shape = SubResource( 2 )
-
 [node name="Sprite" type="Sprite" parent="nube"]
-position = Vector2( 428, 114 )
-scale = Vector2( 0.329114, 0.287313 )
+position = Vector2( 401, 92 )
+scale = Vector2( 0.232068, 0.210821 )
 texture = ExtResource( 3 )
-
-[node name="tierra" type="CollisionShape2D" parent="nube"]
-position = Vector2( 413.25, 324.5 )
-shape = SubResource( 3 )
 
 [node name="menuLateral" type="Area2D" parent="."]
 script = ExtResource( 10 )
 
 [node name="areaVientoHorizontal" type="Area2D" parent="menuLateral"]
-position = Vector2( 914, 326 )
+position = Vector2( 913, 268 )
 
 [node name="vientoHorizontal" type="Sprite" parent="menuLateral/areaVientoHorizontal"]
-position = Vector2( 14, -8 )
-scale = Vector2( 0.0754944, 0.0677389 )
+position = Vector2( 4, 1 )
+scale = Vector2( 0.0425575, 0.0348441 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="menuLateral/areaVientoHorizontal"]
-position = Vector2( -1, -2 )
+position = Vector2( 1, 0 )
 shape = SubResource( 5 )
 
 [node name="areaVientoVertial" type="Area2D" parent="menuLateral"]
 position = Vector2( 916, 200 )
 
 [node name="vientoVertical" type="Sprite" parent="menuLateral/areaVientoVertial"]
-position = Vector2( 7, 3 )
+position = Vector2( -4.8921, -16.0273 )
 rotation = 1.5708
-scale = Vector2( 0.0556536, 0.0636836 )
+scale = Vector2( 0.0353144, 0.040502 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="menuLateral/areaVientoVertial"]
-position = Vector2( -1, 1 )
+position = Vector2( -13.5, -19 )
 shape = SubResource( 6 )
 
 [node name="termometro" type="Sprite" parent="menuLateral"]
-position = Vector2( 922, 90 )
-scale = Vector2( 0.314229, 0.368313 )
+position = Vector2( 909.625, 76.125 )
+scale = Vector2( 0.216403, 0.254115 )
 texture = ExtResource( 4 )
 
 [node name="formaNube" type="Sprite" parent="menuLateral"]
@@ -115,10 +95,10 @@ scale = Vector2( 0.111814, 0.287313 )
 texture = ExtResource( 6 )
 
 [node name="OptionButton" type="OptionButton" parent="menuLateral/formaNube"]
-margin_left = -988.247
-margin_top = -816.183
-margin_right = -848.247
-margin_bottom = -729.183
+margin_left = -1032.97
+margin_top = -979.768
+margin_right = -892.966
+margin_bottom = -892.768
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/focus = ExtResource( 7 )
@@ -126,10 +106,10 @@ custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
 
 [node name="termometroBtn" type="Button" parent="menuLateral"]
-margin_left = 866.0
+margin_left = 882.0
 margin_top = 50.0
-margin_right = 953.0
-margin_bottom = 138.0
+margin_right = 930.0
+margin_bottom = 105.0
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/focus = ExtResource( 7 )
@@ -137,11 +117,16 @@ custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
 
 [node name="menuprincipal" type="Button" parent="."]
-margin_left = 12.0
-margin_top = 567.0
-margin_right = 179.0
-margin_bottom = 585.0
+margin_left = 40.0
+margin_top = 540.0
+margin_right = 240.0
+margin_bottom = 570.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_styles/hover = ExtResource( 15 )
 custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = ExtResource( 14 )
@@ -150,21 +135,21 @@ custom_styles/normal = ExtResource( 14 )
 text = "Volver al menú principal"
 
 [node name="descripcionLabel" type="Label" parent="."]
-margin_left = 5.0
-margin_top = 456.0
-margin_right = 760.0
-margin_bottom = 506.0
+margin_left = 32.0
+margin_top = 400.0
+margin_right = 728.0
+margin_bottom = 517.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 16 )
 text = "Esta nube ha sido trasladad por rafagas de viento pero no se ha precipitado. 
-Configure las condiciones serán necesarias para que se de una precipitacion
- de tipo GRANIZO"
+    Configure las condiciones  necesarias para que se de una precipitacion de tipo GRANIZO"
+autowrap = true
 
 [node name="pistaLabel" type="Label" parent="."]
-margin_left = 131.0
-margin_top = 521.0
-margin_right = 834.0
-margin_bottom = 564.0
+margin_left = 298.0
+margin_top = 615.0
+margin_right = 1001.0
+margin_bottom = 658.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Pista: ¿Como puede influir la forma de una nube a su precipitacion? 
@@ -187,10 +172,16 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Temperatura"
 
 [node name="comprobar" type="Button" parent="."]
-margin_left = 864.0
-margin_top = 558.0
-margin_right = 975.0
-margin_bottom = 579.0
+margin_left = 784.0
+margin_top = 540.0
+margin_right = 984.0
+margin_bottom = 570.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_styles/hover = ExtResource( 15 )
 custom_styles/pressed = ExtResource( 14 )
 custom_styles/focus = ExtResource( 14 )
@@ -205,9 +196,11 @@ margin_right = 1036.0
 margin_bottom = 24.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="input_event" from="menuLateral/areaVientoHorizontal" to="." method="_on_areaVientoHorizontal_input_event"]
 [connection signal="input_event" from="menuLateral/areaVientoVertial" to="." method="_on_areaVientoVertial_input_event"]
 [connection signal="item_selected" from="menuLateral/formaNube/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="button_down" from="menuLateral/termometroBtn" to="." method="_on_termometroBtn_button_down"]
 [connection signal="pressed" from="menuLateral/termometroBtn" to="." method="_on_termometroBtn_pressed"]
 [connection signal="pressed" from="menuprincipal" to="." method="_on_menuprincipal_pressed"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]

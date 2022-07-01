@@ -18,8 +18,8 @@ func _on_Termometro_input_event(viewport, event, shape_idx):
 		print(temp)
 		if event.pressed:
 			selected = not selected
-	#	else:
-	#		selected = false
+		else:
+			selected = false
 func changeTemp(newTemp):
 	temp =  newTemp
 	$Label.text = str(temp)

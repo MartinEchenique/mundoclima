@@ -21,7 +21,10 @@ func _process(delta):
 	for element in instanciaDeTermometro:
 		element.changeTemp(calcularTemperatura(element))
 		if element.selected:
+			if flag == true:
+				element.selected = false
 			flag = true
+			
 	if flag == true:
 		selected = true
 	if not flag and not selectedVientoHorizontal and not selectedVientoVertical:
@@ -44,27 +47,16 @@ func _on_OptionButton_item_selected(index):
 			tipoNube = "alta"
 
 
-func _on_termometroBtn_pressed():
-	if instanciaDeTermometro.size() < 3 and not selected:
-		var drag = false
-		for element in instanciaDeTermometro:
-			if element.selected == true:
-				drag = true
-		if not drag:
-			var T = Termometro.instance()
-			T.changeTemp(calcularTemperatura(T))
-			add_child(T)
-			instanciaDeTermometro.append(T)
 
 
 func _on_menuprincipal_pressed():
 	get_tree().change_scene("res://mainMenu.tscn")
 
 func calcularTemperatura(T):
-	if T.position.y < 105:
+	if T.position.y <= 90:
 		return baseTemp - 30
 	else:
-		if T.position.y > 105 and T.position.y < 220:
+		if T.position.y > 90 and T.position.y < 220:
 			return baseTemp - 10
 		else:
 			 return baseTemp + 5
@@ -121,4 +113,27 @@ func _on_comprobar_pressed():
 		sceneIncorrecta.isNubeCorrect = isNubeCorrect
 		add_child(sceneIncorrecta)
 
-		
+
+func _on_termometroBtn_button_down():
+	if instanciaDeTermometro.size() < 3 and not selected:
+		var drag = false
+		for element in instanciaDeTermometro:
+			if element.selected == true:
+				drag = true
+		if not drag:
+			var T = Termometro.instance()
+			T.changeTemp(calcularTemperatura(T))
+			add_child(T)
+			instanciaDeTermometro.append(T)
+			T.selected=true
+			selected=true
+	if instanciaDeTermometro.size() == 3:
+		$menuLateral/termometro.visible = false
+		$menuLateral/termometroBtn.visible = false
+
+func _input( event ):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		print("Hello")
+		for element in instanciaDeTermometro:
+			if element.selected:
+				element.selected = false

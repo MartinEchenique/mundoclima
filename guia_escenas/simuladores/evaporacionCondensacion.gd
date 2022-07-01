@@ -1,5 +1,5 @@
 extends Node2D
-var posicion = Vector2(493, 300) 
+var posicion = Vector2(493, 350) 
 func _ready():
 		$CanvasLayer/evaporacion1.position = posicion
 		$CanvasLayer/evaporacion2.position = posicion
