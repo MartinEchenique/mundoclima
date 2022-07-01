@@ -7,6 +7,8 @@ func _ready():
 	
 
 func _on_HSlider_value_changed(value):
+	
+	$Label2.text = str(value)
 
 	if value <0:
 		$CanvasLayer/evaporacion1.visible = false
