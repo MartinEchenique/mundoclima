@@ -63,10 +63,10 @@ scale = Vector2( 0.233051, 0.138476 )
 texture = ExtResource( 8 )
 
 [node name="HSlider" type="HSlider" parent="."]
-margin_left = 377.0
-margin_top = 553.0
-margin_right = 538.0
-margin_bottom = 594.0
+margin_left = 475.0
+margin_top = 522.0
+margin_right = 636.0
+margin_bottom = 563.0
 min_value = -10.0
 max_value = 45.0
 
@@ -83,10 +83,10 @@ como vapor de agua. Corrientes ascendentes de aire llevan el vapor a las capas s
 autowrap = true
 
 [node name="temperaturalabel" type="Label" parent="."]
-margin_left = 266.0
-margin_top = 564.0
-margin_right = 367.0
-margin_bottom = 580.0
+margin_left = 357.0
+margin_top = 534.0
+margin_right = 458.0
+margin_bottom = 550.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Temperatura"
@@ -135,6 +135,14 @@ custom_styles/focus = ExtResource( 11 )
 custom_styles/disabled = ExtResource( 10 )
 custom_styles/normal = ExtResource( 10 )
 text = "Siguiente"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 505.0
+margin_top = 554.0
+margin_right = 545.0
+margin_bottom = 568.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0º"
 
 [connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="menuprincipal" to="." method="_on_menuprincipal_pressed"]

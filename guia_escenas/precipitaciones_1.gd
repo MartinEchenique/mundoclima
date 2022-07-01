@@ -1,9 +1,9 @@
 extends Node
 
-const EvaporacionPopup = preload("res://guia_escenas/ciclopopups/evaporacion.tscn")
+const EvaporacionPopup = preload("res://guia_escenas/ciclopopups/evaporacion2.tscn")
 const CondensacionPopup = preload("res://guia_escenas/ciclopopups/condensacion.tscn")
-const PrecipitacionPopup = preload("res://guia_escenas/ciclopopups/precipitacion.tscn")
-const InfiltracionPopup = preload("res://guia_escenas/ciclopopups/infiltracion.tscn")
+const PrecipitacionPopup = preload("res://guia_escenas/ciclopopups/precipitacion2.tscn")
+const InfiltracionPopup = preload("res://guia_escenas/ciclopopups/infiltracion2.tscn")
 const EscorrentiaPopup = preload("res://guia_escenas/ciclopopups/escorrentia.tscn")
 func _ready():
 	pass 

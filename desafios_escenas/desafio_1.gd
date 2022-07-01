@@ -35,18 +35,6 @@ func _process(delta):
 	if selectedVientoHorizontal:
 		$menuLateral/areaVientoHorizontal.position = get_global_mouse_position()
 		print($menuLateral/areaVientoHorizontal.position)
-func _on_OptionButton_item_selected(index):
-	 if index == 0:
-			nube.set_texture(nube0)
-			tipoNube = "pequeña"
-	 if index == 1:
-			nube.set_texture(nube1)
-			tipoNube = "mediana"
-	 if index == 2:
-			nube.set_texture(nube2)
-			tipoNube = "alta"
-
-
 
 
 func _on_menuprincipal_pressed():
@@ -72,7 +60,7 @@ func _on_areaVientoHorizontal_input_event(viewport, event, shape_idx):
 			selected = true
 			selectedVientoHorizontal = true
 		else:
-			if event.pressed and selected and selectedVientoHorizontal:
+			if selected and selectedVientoHorizontal:
 					selectedVientoHorizontal = false
 					selected = false
 
@@ -82,11 +70,10 @@ func _on_areaVientoVertial_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 
 		if event.pressed and not selected and not selectedVientoVertical:
-			print("clic")
 			selected = true
 			selectedVientoVertical = true
 		else:
-			if event.pressed and selected and selectedVientoVertical:
+			if selected and selectedVientoVertical:
 				selectedVientoVertical = false
 				selected = false
 
@@ -133,7 +120,20 @@ func _on_termometroBtn_button_down():
 
 func _input( event ):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
-		print("Hello")
+
 		for element in instanciaDeTermometro:
 			if element.selected:
 				element.selected = false
+
+
+func _on_OptionButton_item_selected(index):
+	 if index == 0:
+			nube.set_texture(nube0)
+			tipoNube = "pequeña"
+	 if index == 1:
+			nube.set_texture(nube1)
+			tipoNube = "mediana"
+	 if index == 2:
+			nube.set_texture(nube2)
+			tipoNube = "alta"
+

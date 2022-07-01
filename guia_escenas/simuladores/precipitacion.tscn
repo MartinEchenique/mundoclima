@@ -1,25 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://buttonfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://guia_escenas/simuladores/precipitacion.gd" type="Script" id=2]
 [ext_resource path="res://button_normal_style.tres" type="StyleBox" id=3]
 [ext_resource path="res://button_hover_style.tres" type="StyleBox" id=4]
-[ext_resource path="res://fonts/JAi_____.TTF" type="DynamicFontData" id=9]
+[ext_resource path="res://Sprites/fondo_cieloDespejado.png" type="Texture" id=5]
+[ext_resource path="res://desafios_escenas/menuLateral.gd" type="Script" id=6]
+[ext_resource path="res://select_cicloparte_buttonnormal.tres" type="StyleBox" id=7]
+[ext_resource path="res://Sprites/evaporacion/termometro.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/viento.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/evaporacion/container.png" type="Texture" id=10]
+[ext_resource path="res://select_cicloparte_buttonhover.tres" type="StyleBox" id=11]
+[ext_resource path="res://Sprites/evaporacion/nubepequeña.png" type="Texture" id=12]
+[ext_resource path="res://Termometro.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sprites/nevada.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/nieve Icon.png.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/lluviaIcon.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/granizo.png" type="Texture" id=17]
 
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 9 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 47.125, 22.25 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29.5, 37 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
-
-[node name="temperaturalabel2" type="Label" parent="."]
-margin_left = 454.0
-margin_top = 238.0
-margin_right = 659.0
-margin_bottom = 316.0
-custom_colors/font_color = Color( 0.0470588, 0.262745, 0.00392157, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "En desarollo"
+Termometro = ExtResource( 13 )
 
 [node name="menuprincipal" type="Button" parent="."]
 margin_left = 40.0
@@ -57,4 +64,164 @@ custom_styles/disabled = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
 text = "Siguiente"
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 18.0
+margin_top = 63.0
+margin_right = 1398.0
+margin_bottom = 839.0
+rect_scale = Vector2( 0.556206, 0.506222 )
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+texture = ExtResource( 5 )
+
+[node name="nevada" type="Sprite" parent="."]
+position = Vector2( 613, 238.594 )
+scale = Vector2( 0.745849, 0.924194 )
+texture = ExtResource( 14 )
+
+[node name="menuLateral" type="Area2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="areaVientoHorizontal" type="Area2D" parent="menuLateral"]
+position = Vector2( 845, 261 )
+
+[node name="vientoHorizontal" type="Sprite" parent="menuLateral/areaVientoHorizontal"]
+position = Vector2( 3, 0 )
+scale = Vector2( 0.0425575, 0.0348441 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="menuLateral/areaVientoHorizontal"]
+position = Vector2( 2, 2 )
+shape = SubResource( 1 )
+
+[node name="areaVientoHorizontal2" type="Area2D" parent="menuLateral"]
+position = Vector2( 853, 339 )
+
+[node name="vientoHorizontal" type="Sprite" parent="menuLateral/areaVientoHorizontal2"]
+position = Vector2( 2, 0 )
+scale = Vector2( 0.0425575, 0.0348441 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="menuLateral/areaVientoHorizontal2"]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="areaVientoVertial" type="Area2D" parent="menuLateral"]
+position = Vector2( 824, 173 )
+
+[node name="vientoVertical" type="Sprite" parent="menuLateral/areaVientoVertial"]
+position = Vector2( 1, 2 )
+rotation = 1.5708
+scale = Vector2( 0.0353144, 0.040502 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="menuLateral/areaVientoVertial"]
+position = Vector2( 2, 0 )
+shape = SubResource( 2 )
+
+[node name="termometro" type="Sprite" parent="menuLateral"]
+position = Vector2( 946, 166 )
+scale = Vector2( 0.216403, 0.254115 )
+texture = ExtResource( 8 )
+
+[node name="formaNube" type="Sprite" parent="menuLateral"]
+position = Vector2( 1017.5, 611.5 )
+scale = Vector2( 0.111814, 0.287313 )
+texture = ExtResource( 10 )
+
+[node name="OptionButton" type="OptionButton" parent="menuLateral/formaNube"]
+margin_left = -630.512
+margin_top = -1202.52
+margin_right = -490.508
+margin_bottom = -1115.52
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+
+[node name="termometroBtn" type="Button" parent="menuLateral"]
+margin_left = 932.0
+margin_top = 141.0
+margin_right = 980.0
+margin_bottom = 196.0
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 808.0
+margin_top = 80.0
+margin_right = 969.0
+margin_bottom = 121.0
+min_value = -10.0
+max_value = 45.0
+value = 10.0
+
+[node name="temperatura" type="Label" parent="."]
+margin_left = 839.0
+margin_top = 73.0
+margin_right = 965.0
+margin_bottom = 102.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Temperatura"
+
+[node name="nube" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="nube"]
+position = Vector2( 273, 173 )
+scale = Vector2( 0.232068, 0.210821 )
+texture = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 929.0
+margin_top = 72.0
+margin_right = 999.0
+margin_bottom = 97.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+
+[node name="granizo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 466, 532 )
+scale = Vector2( 0.18457, 0.133789 )
+texture = ExtResource( 17 )
+
+[node name="lluvia" type="Sprite" parent="."]
+position = Vector2( 463, 526 )
+scale = Vector2( 0.169434, 0.155518 )
+texture = ExtResource( 16 )
+
+[node name="nieve" type="Sprite" parent="."]
+position = Vector2( 454.633, 526.23 )
+scale = Vector2( 0.165918, 0.156924 )
+texture = ExtResource( 15 )
+
+[node name="Precipitacion Generada" type="Label" parent="."]
+margin_left = 385.0
+margin_top = 472.0
+margin_right = 533.0
+margin_bottom = 486.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Precipitacion Generada"
+
+[node name="precipitacionNombre" type="Label" parent="."]
+margin_left = 400.0
+margin_top = 580.0
+margin_right = 548.0
+margin_bottom = 594.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+align = 1
+
 [connection signal="pressed" from="menuprincipal" to="." method="_on_menuprincipal_pressed"]
+[connection signal="input_event" from="menuLateral/areaVientoHorizontal" to="." method="_on_areaVientoHorizontal_input_event"]
+[connection signal="input_event" from="menuLateral/areaVientoHorizontal2" to="." method="_on_areaVientoHorizontal2_input_event"]
+[connection signal="input_event" from="menuLateral/areaVientoVertial" to="." method="_on_areaVientoVertial_input_event"]
+[connection signal="item_selected" from="menuLateral/formaNube/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="button_down" from="menuLateral/termometroBtn" to="." method="_on_termometroBtn_button_down"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
